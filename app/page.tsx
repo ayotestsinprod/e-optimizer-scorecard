@@ -192,31 +192,59 @@ export default function Home() {
                 accept=".csv"
                 onChange={handleFileSelect}
               />
-              <label
-                htmlFor="file-upload"
-                style={{
-                  display: 'inline-block',
-                  padding: '10px 24px',
-                  fontSize: '14px',
-                  color: 'white',
-                  fontWeight: 600,
-                  borderRadius: '8px',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s',
-                  background: 'linear-gradient(135deg, #2563eb 0%, #3b82f6 100%)',
-                  boxShadow: '0 4px 14px rgba(59, 130, 246, 0.3)',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-1px)';
-                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(59, 130, 246, 0.4)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 4px 14px rgba(59, 130, 246, 0.3)';
-                }}
-              >
-                Select CSV File
-              </label>
+              <div style={{ display: 'flex', gap: '12px', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <label
+                  htmlFor="file-upload"
+                  style={{
+                    display: 'inline-block',
+                    padding: '10px 24px',
+                    fontSize: '14px',
+                    color: 'white',
+                    fontWeight: 600,
+                    borderRadius: '8px',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s',
+                    background: 'linear-gradient(135deg, #2563eb 0%, #3b82f6 100%)',
+                    boxShadow: '0 4px 14px rgba(59, 130, 246, 0.3)',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-1px)';
+                    e.currentTarget.style.boxShadow = '0 6px 20px rgba(59, 130, 246, 0.4)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 4px 14px rgba(59, 130, 246, 0.3)';
+                  }}
+                >
+                  Upload Your Data
+                </label>
+
+                <button
+                  onClick={() => router.push('/scorecard')}
+                  style={{
+                    display: 'inline-block',
+                    padding: '10px 24px',
+                    fontSize: '14px',
+                    color: '#60a5fa',
+                    fontWeight: 600,
+                    borderRadius: '8px',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s',
+                    background: 'transparent',
+                    border: '1px solid #334155',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = '#60a5fa';
+                    e.currentTarget.style.backgroundColor = 'rgba(96, 165, 250, 0.05)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = '#334155';
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                  }}
+                >
+                  View Sample Scorecard
+                </button>
+              </div>
 
               <p style={{ fontSize: '12px', marginTop: '16px', color: '#64748b' }}>
                 One month of dispatch data • CSV format • Anonymous & secure

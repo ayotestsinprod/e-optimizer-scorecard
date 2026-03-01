@@ -46,6 +46,22 @@ export default function Scorecard() {
       }}
     >
       <div className="max-w-6xl mx-auto">
+        {/* Sample Banner */}
+        <div 
+          style={{
+            marginBottom: '24px',
+            padding: '12px 16px',
+            borderRadius: '12px',
+            background: 'linear-gradient(90deg, rgba(59, 130, 246, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%)',
+            border: '1px solid rgba(59, 130, 246, 0.3)',
+            textAlign: 'center',
+          }}
+        >
+          <p style={{ color: '#60a5fa', fontSize: '14px', fontWeight: 500 }}>
+            📊 Sample Scorecard — Upload your data to see your actual performance
+          </p>
+        </div>
+
         {/* Header */}
         <div className="mb-12">
           <div 

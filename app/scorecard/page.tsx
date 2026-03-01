@@ -1,6 +1,5 @@
 'use client';
 
-// Mock data for MVP
 const mockData = {
   grade: 'B+',
   asset: 'Bramley Battery',
@@ -40,12 +39,13 @@ export default function Scorecard() {
 
   return (
     <div 
-      className="min-h-screen p-6 lg:p-12"
       style={{
+        minHeight: '100vh',
+        padding: '24px',
         background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)',
       }}
     >
-      <div className="max-w-6xl mx-auto">
+      <div style={{ maxWidth: '72rem', margin: '0 auto' }}>
         {/* Sample Banner */}
         <div 
           style={{
@@ -57,50 +57,63 @@ export default function Scorecard() {
             textAlign: 'center',
           }}
         >
-          <p style={{ color: '#60a5fa', fontSize: '14px', fontWeight: 500 }}>
+          <p style={{ color: '#60a5fa', fontSize: '14px', fontWeight: 500, margin: 0 }}>
             📊 Sample Scorecard — Upload your data to see your actual performance
           </p>
         </div>
 
         {/* Header */}
-        <div className="mb-12">
+        <div style={{ marginBottom: '48px' }}>
           <div 
-            className="inline-block mb-4 px-3 py-1 rounded-lg border"
             style={{
+              display: 'inline-block',
+              marginBottom: '16px',
+              padding: '4px 12px',
+              borderRadius: '8px',
+              border: '1px solid #334155',
               backgroundColor: 'rgba(30, 41, 59, 0.5)',
-              borderColor: '#334155',
             }}
           >
-            <span className="text-xs font-mono tracking-wider" style={{ color: '#94a3b8' }}>
+            <span style={{ fontSize: '12px', fontFamily: 'monospace', letterSpacing: '0.05em', color: '#94a3b8' }}>
               OPTIMIZER SCORECARD
             </span>
           </div>
-          <h1 className="text-4xl font-bold text-white mb-2">{mockData.asset}</h1>
-          <p className="text-lg" style={{ color: '#94a3b8' }}>
+          <h1 style={{ fontSize: '2.25rem', fontWeight: 700, color: 'white', marginBottom: '8px', marginTop: 0 }}>
+            {mockData.asset}
+          </h1>
+          <p style={{ fontSize: '1.125rem', color: '#94a3b8', margin: 0 }}>
             {mockData.market} • {mockData.period}
           </p>
         </div>
 
         {/* Hero Grade */}
         <div 
-          className="relative mb-8 p-12 rounded-3xl border shadow-2xl overflow-hidden"
           style={{
+            position: 'relative',
+            marginBottom: '32px',
+            padding: '48px',
+            borderRadius: '24px',
+            border: '1px solid #334155',
             background: 'linear-gradient(135deg, #1e293b 0%, #334155 50%, #1e293b 100%)',
-            borderColor: '#334155',
+            boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
+            overflow: 'hidden',
           }}
         >
           <div 
-            className="absolute inset-0"
             style={{
+              position: 'absolute',
+              inset: 0,
               background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(6, 182, 212, 0.05) 100%)',
             }}
-          ></div>
-          <div className="relative text-center">
-            <div className="mb-6">
+          />
+          <div style={{ position: 'relative', textAlign: 'center' }}>
+            <div style={{ marginBottom: '24px' }}>
               <div 
-                className="font-bold leading-none tracking-tight"
                 style={{ 
                   fontSize: '14rem',
+                  fontWeight: 700,
+                  lineHeight: 1,
+                  letterSpacing: '-0.025em',
                   background: 'linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
@@ -111,107 +124,122 @@ export default function Scorecard() {
                 {mockData.grade}
               </div>
             </div>
-            <div className="text-2xl font-semibold mb-2" style={{ color: '#e2e8f0' }}>
+            <div style={{ fontSize: '1.5rem', color: '#e2e8f0', fontWeight: 600, marginBottom: '8px' }}>
               Performance Grade
             </div>
-            <div className="text-lg" style={{ color: '#94a3b8' }}>
-              Better than <span className="font-bold" style={{ color: '#60a5fa' }}>{mockData.peerBenchmark.percentile}%</span> of optimizers
+            <div style={{ fontSize: '1.125rem', color: '#94a3b8' }}>
+              Better than <span style={{ color: '#60a5fa', fontWeight: 700 }}>{mockData.peerBenchmark.percentile}%</span> of optimizers
             </div>
           </div>
         </div>
 
         {/* Revenue Gap */}
         <div 
-          className="mb-8 p-8 rounded-3xl border shadow-xl"
           style={{
+            marginBottom: '32px',
+            padding: '32px',
+            borderRadius: '24px',
+            border: '1px solid #334155',
             background: 'linear-gradient(135deg, #1e293b 0%, #334155 100%)',
-            borderColor: '#334155',
+            boxShadow: '0 10px 40px rgba(0, 0, 0, 0.2)',
           }}
         >
-          <div className="flex items-center gap-2 mb-8">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '32px' }}>
             <div 
-              className="w-1 h-6 rounded-full"
               style={{
+                width: '4px',
+                height: '24px',
+                borderRadius: '2px',
                 background: 'linear-gradient(180deg, #3b82f6 0%, #06b6d4 100%)',
               }}
-            ></div>
-            <h3 className="text-sm font-mono tracking-wider" style={{ color: '#94a3b8' }}>
+            />
+            <h3 style={{ fontSize: '12px', fontFamily: 'monospace', letterSpacing: '0.05em', color: '#94a3b8', margin: 0 }}>
               REVENUE ANALYSIS
             </h3>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '32px', marginBottom: '32px' }}>
             <div 
-              className="p-6 rounded-2xl border"
               style={{
+                padding: '24px',
+                borderRadius: '16px',
+                border: '1px solid #334155',
                 backgroundColor: 'rgba(30, 41, 59, 0.5)',
-                borderColor: '#334155',
               }}
             >
-              <div className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: '#64748b' }}>
+              <div style={{ fontSize: '12px', color: '#64748b', fontFamily: 'monospace', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '12px' }}>
                 Actual Revenue
               </div>
-              <div className="text-4xl font-bold font-mono text-white">
+              <div style={{ fontSize: '2.25rem', fontWeight: 700, fontFamily: 'monospace', color: 'white' }}>
                 {formatCurrency(mockData.actualRevenue)}
               </div>
             </div>
             <div 
-              className="p-6 rounded-2xl border"
               style={{
+                padding: '24px',
+                borderRadius: '16px',
+                border: '1px solid #334155',
                 backgroundColor: 'rgba(30, 41, 59, 0.5)',
-                borderColor: '#334155',
               }}
             >
-              <div className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: '#64748b' }}>
+              <div style={{ fontSize: '12px', color: '#64748b', fontFamily: 'monospace', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '12px' }}>
                 Optimal Revenue
               </div>
-              <div className="text-4xl font-bold font-mono text-white">
+              <div style={{ fontSize: '2.25rem', fontWeight: 700, fontFamily: 'monospace', color: 'white' }}>
                 {formatCurrency(mockData.optimalRevenue)}
               </div>
             </div>
             <div 
-              className="p-6 rounded-2xl border"
               style={{
+                padding: '24px',
+                borderRadius: '16px',
+                border: '1px solid rgba(239, 68, 68, 0.3)',
                 background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(251, 146, 60, 0.1) 100%)',
-                borderColor: 'rgba(239, 68, 68, 0.3)',
               }}
             >
-              <div className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: '#f87171' }}>
+              <div style={{ fontSize: '12px', color: '#f87171', fontFamily: 'monospace', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '12px' }}>
                 Opportunity Gap
               </div>
-              <div className="text-4xl font-bold font-mono" style={{ color: '#f87171' }}>
+              <div style={{ fontSize: '2.25rem', fontWeight: 700, fontFamily: 'monospace', color: '#f87171' }}>
                 -{formatCurrency(mockData.gapAmount)}
               </div>
-              <div className="text-sm mt-2" style={{ color: 'rgba(248, 113, 113, 0.8)' }}>
+              <div style={{ fontSize: '14px', color: 'rgba(248, 113, 113, 0.8)', marginTop: '8px' }}>
                 ({mockData.gapPercent}% unrealized)
               </div>
             </div>
           </div>
 
           <div 
-            className="p-6 rounded-2xl border"
             style={{
+              padding: '24px',
+              borderRadius: '16px',
+              border: '1px solid rgba(245, 158, 11, 0.3)',
               background: 'linear-gradient(90deg, rgba(245, 158, 11, 0.1) 0%, rgba(251, 146, 60, 0.1) 100%)',
-              borderColor: 'rgba(245, 158, 11, 0.3)',
             }}
           >
-            <div className="flex items-start gap-4">
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
               <div 
-                className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center"
                 style={{
+                  flexShrink: 0,
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '12px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                   backgroundColor: 'rgba(245, 158, 11, 0.2)',
                 }}
               >
-                <svg className="w-6 h-6" style={{ color: '#fbbf24' }} fill="currentColor" viewBox="0 0 20 20">
+                <svg width="24" height="24" fill="#fbbf24" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                 </svg>
               </div>
               <div>
-                <div className="font-semibold mb-1" style={{ color: '#fef3c7' }}>
+                <div style={{ color: '#fef3c7', fontWeight: 600, marginBottom: '4px' }}>
                   Revenue Opportunity Identified
                 </div>
-                <div className="text-sm" style={{ color: 'rgba(254, 243, 199, 0.8)' }}>
-                  Your optimizer left <span className="text-white font-bold">{formatCurrency(mockData.gapAmount)}</span> on the table this month. That's potential revenue that could be recovered with optimization.
+                <div style={{ color: 'rgba(254, 243, 199, 0.8)', fontSize: '14px' }}>
+                  Your optimizer left <span style={{ color: 'white', fontWeight: 700 }}>{formatCurrency(mockData.gapAmount)}</span> on the table this month. That's potential revenue that could be recovered with optimization.
                 </div>
               </div>
             </div>
@@ -220,44 +248,52 @@ export default function Scorecard() {
 
         {/* Key Stats */}
         <div 
-          className="mb-8 p-8 rounded-3xl border shadow-xl"
           style={{
+            marginBottom: '32px',
+            padding: '32px',
+            borderRadius: '24px',
+            border: '1px solid #334155',
             background: 'linear-gradient(135deg, #1e293b 0%, #334155 100%)',
-            borderColor: '#334155',
+            boxShadow: '0 10px 40px rgba(0, 0, 0, 0.2)',
           }}
         >
-          <div className="flex items-center gap-2 mb-8">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '32px' }}>
             <div 
-              className="w-1 h-6 rounded-full"
               style={{
+                width: '4px',
+                height: '24px',
+                borderRadius: '2px',
                 background: 'linear-gradient(180deg, #3b82f6 0%, #06b6d4 100%)',
               }}
-            ></div>
-            <h3 className="text-sm font-mono tracking-wider" style={{ color: '#94a3b8' }}>
+            />
+            <h3 style={{ fontSize: '12px', fontFamily: 'monospace', letterSpacing: '0.05em', color: '#94a3b8', margin: 0 }}>
               KEY METRICS
             </h3>
           </div>
           
-          <div className="grid md:grid-cols-4 gap-6">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '24px' }}>
             {mockData.stats.map((stat, idx) => (
               <div 
                 key={idx} 
-                className="p-6 rounded-2xl border transition-colors"
                 style={{
+                  padding: '24px',
+                  borderRadius: '16px',
+                  border: '1px solid #334155',
                   backgroundColor: 'rgba(30, 41, 59, 0.5)',
-                  borderColor: '#334155',
+                  transition: 'border-color 0.2s',
                 }}
               >
-                <div className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: '#64748b' }}>
+                <div style={{ fontSize: '12px', color: '#64748b', fontFamily: 'monospace', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '12px' }}>
                   {stat.label}
                 </div>
-                <div className="text-3xl font-bold font-mono text-white mb-2">{stat.value}</div>
+                <div style={{ fontSize: '1.875rem', fontWeight: 700, fontFamily: 'monospace', color: 'white', marginBottom: '8px' }}>
+                  {stat.value}
+                </div>
                 <div 
-                  className="text-sm font-medium"
                   style={{ 
-                    color: stat.positive === true ? '#34d399' : 
-                           stat.positive === false ? '#f87171' : 
-                           '#64748b'
+                    fontSize: '14px',
+                    fontWeight: 500,
+                    color: stat.positive === true ? '#34d399' : stat.positive === false ? '#f87171' : '#64748b'
                   }}
                 >
                   {stat.change !== '0%' ? stat.change + ' vs last month' : 'No change'}
@@ -269,42 +305,50 @@ export default function Scorecard() {
 
         {/* Peer Benchmark */}
         <div 
-          className="mb-12 p-8 rounded-3xl border shadow-xl"
           style={{
+            marginBottom: '48px',
+            padding: '32px',
+            borderRadius: '24px',
+            border: '1px solid #334155',
             background: 'linear-gradient(135deg, #1e293b 0%, #334155 100%)',
-            borderColor: '#334155',
+            boxShadow: '0 10px 40px rgba(0, 0, 0, 0.2)',
           }}
         >
-          <div className="flex items-center gap-2 mb-8">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '32px' }}>
             <div 
-              className="w-1 h-6 rounded-full"
               style={{
+                width: '4px',
+                height: '24px',
+                borderRadius: '2px',
                 background: 'linear-gradient(180deg, #3b82f6 0%, #06b6d4 100%)',
               }}
-            ></div>
-            <h3 className="text-sm font-mono tracking-wider" style={{ color: '#94a3b8' }}>
+            />
+            <h3 style={{ fontSize: '12px', fontFamily: 'monospace', letterSpacing: '0.05em', color: '#94a3b8', margin: 0 }}>
               MARKET BENCHMARK
             </h3>
           </div>
           
-          <div className="mb-8">
-            <div className="text-sm mb-8" style={{ color: '#94a3b8' }}>
-              Distribution of <span className="text-white font-semibold">{mockData.peerBenchmark.distribution.reduce((sum, d) => sum + d.count, 0)}</span> optimizers (anonymous)
+          <div style={{ marginBottom: '32px' }}>
+            <div style={{ fontSize: '14px', color: '#94a3b8', marginBottom: '32px' }}>
+              Distribution of <span style={{ color: 'white', fontWeight: 600 }}>{mockData.peerBenchmark.distribution.reduce((sum, d) => sum + d.count, 0)}</span> optimizers (anonymous)
             </div>
             
-            <div className="flex items-end justify-between gap-6 h-64 px-4">
+            <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '24px', height: '256px', padding: '0 16px' }}>
               {mockData.peerBenchmark.distribution.map((item, idx) => {
                 const maxCount = Math.max(...mockData.peerBenchmark.distribution.map(d => d.count));
                 const height = (item.count / maxCount) * 100;
                 const isCurrentGrade = item.grade === mockData.grade.charAt(0);
                 
                 return (
-                  <div key={idx} className="flex-1 flex flex-col items-center gap-4">
-                    <div className="text-xl font-bold" style={{ color: '#cbd5e1' }}>{item.count}</div>
+                  <div key={idx} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
+                    <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#cbd5e1' }}>{item.count}</div>
                     <div
-                      className="w-full rounded-t-2xl transition-all"
                       style={{ 
+                        width: '100%',
                         height: `${height}%`,
+                        borderTopLeftRadius: '16px',
+                        borderTopRightRadius: '16px',
+                        transition: 'all 0.2s',
                         background: isCurrentGrade 
                           ? 'linear-gradient(180deg, #2563eb 0%, #06b6d4 100%)' 
                           : '#475569',
@@ -312,8 +356,10 @@ export default function Scorecard() {
                       }}
                     />
                     <div 
-                      className="text-2xl font-bold font-mono"
                       style={{ 
+                        fontSize: '1.5rem',
+                        fontWeight: 700,
+                        fontFamily: 'monospace',
                         color: isCurrentGrade ? '#60a5fa' : '#64748b'
                       }}
                     >
@@ -326,34 +372,47 @@ export default function Scorecard() {
           </div>
 
           <div 
-            className="p-6 rounded-2xl border"
             style={{
+              padding: '24px',
+              borderRadius: '16px',
+              border: '1px solid rgba(59, 130, 246, 0.3)',
               background: 'linear-gradient(90deg, rgba(59, 130, 246, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%)',
-              borderColor: 'rgba(59, 130, 246, 0.3)',
             }}
           >
             <div style={{ color: '#cbd5e1' }}>
-              Your optimizer ranks in the <span className="font-bold text-lg" style={{ color: '#60a5fa' }}>{mockData.peerBenchmark.percentile}th percentile</span> — better than most, but there's room to improve.
+              Your optimizer ranks in the <span style={{ fontWeight: 700, fontSize: '1.125rem', color: '#60a5fa' }}>{mockData.peerBenchmark.percentile}th percentile</span> — better than most, but there's room to improve.
             </div>
           </div>
         </div>
 
         {/* CTA */}
         <div 
-          className="text-center p-12 rounded-3xl shadow-2xl"
           style={{
+            textAlign: 'center',
+            padding: '48px',
+            borderRadius: '24px',
             background: 'linear-gradient(135deg, #2563eb 0%, #0891b2 100%)',
             boxShadow: '0 20px 60px rgba(59, 130, 246, 0.3)',
           }}
         >
-          <h2 className="text-3xl font-bold text-white mb-4">Ready to close the gap?</h2>
-          <p className="mb-8 max-w-2xl mx-auto text-lg" style={{ color: '#dbeafe' }}>
+          <h2 style={{ fontSize: '1.875rem', fontWeight: 700, color: 'white', marginBottom: '16px', marginTop: 0 }}>
+            Ready to close the gap?
+          </h2>
+          <p style={{ fontSize: '1.125rem', maxWidth: '42rem', margin: '0 auto 32px', color: '#dbeafe' }}>
             Deep dive into dispatch patterns, market opportunities, and optimization recommendations
           </p>
           <button 
-            className="px-10 py-5 bg-white font-bold text-lg rounded-xl transition-all shadow-xl"
             style={{ 
+              padding: '20px 40px',
+              backgroundColor: 'white',
               color: '#2563eb',
+              fontWeight: 700,
+              fontSize: '1.125rem',
+              borderRadius: '12px',
+              border: 'none',
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+              boxShadow: '0 20px 60px rgba(255, 255, 255, 0.2)',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'scale(1.02)';

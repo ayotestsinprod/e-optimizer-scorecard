@@ -3,7 +3,6 @@
 // Mock data for MVP
 const mockData = {
   grade: 'B+',
-  gradeColor: '#3B82F6',
   asset: 'Bramley Battery',
   market: 'GB Frequency Response',
   period: 'February 2026',
@@ -40,84 +39,162 @@ export default function Scorecard() {
   };
 
   return (
-    <div className="min-h-screen p-6 lg:p-12 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+    <div 
+      className="min-h-screen p-6 lg:p-12"
+      style={{
+        background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)',
+      }}
+    >
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-12">
-          <div className="inline-block mb-4 px-3 py-1 rounded-lg bg-slate-800/50 border border-slate-700">
-            <span className="text-xs font-mono text-slate-400 tracking-wider">OPTIMIZER SCORECARD</span>
+          <div 
+            className="inline-block mb-4 px-3 py-1 rounded-lg border"
+            style={{
+              backgroundColor: 'rgba(30, 41, 59, 0.5)',
+              borderColor: '#334155',
+            }}
+          >
+            <span className="text-xs font-mono tracking-wider" style={{ color: '#94a3b8' }}>
+              OPTIMIZER SCORECARD
+            </span>
           </div>
           <h1 className="text-4xl font-bold text-white mb-2">{mockData.asset}</h1>
-          <p className="text-lg text-slate-400">
+          <p className="text-lg" style={{ color: '#94a3b8' }}>
             {mockData.market} • {mockData.period}
           </p>
         </div>
 
         {/* Hero Grade */}
-        <div className="relative mb-8 p-12 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border border-slate-700 shadow-2xl overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/5"></div>
+        <div 
+          className="relative mb-8 p-12 rounded-3xl border shadow-2xl overflow-hidden"
+          style={{
+            background: 'linear-gradient(135deg, #1e293b 0%, #334155 50%, #1e293b 100%)',
+            borderColor: '#334155',
+          }}
+        >
+          <div 
+            className="absolute inset-0"
+            style={{
+              background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(6, 182, 212, 0.05) 100%)',
+            }}
+          ></div>
           <div className="relative text-center">
             <div className="mb-6">
               <div 
-                className="text-[14rem] font-bold leading-none tracking-tight"
+                className="font-bold leading-none tracking-tight"
                 style={{ 
-                  background: 'linear-gradient(135deg, #3B82F6 0%, #60A5FA 100%)',
+                  fontSize: '14rem',
+                  background: 'linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
-                  filter: 'drop-shadow(0 0 40px rgba(59, 130, 246, 0.3))'
+                  backgroundClip: 'text',
+                  filter: 'drop-shadow(0 0 40px rgba(59, 130, 246, 0.4))',
                 }}
               >
                 {mockData.grade}
               </div>
             </div>
-            <div className="text-2xl text-slate-300 font-semibold mb-2">Performance Grade</div>
-            <div className="text-lg text-slate-400">
-              Better than <span className="text-blue-400 font-bold">{mockData.peerBenchmark.percentile}%</span> of optimizers
+            <div className="text-2xl font-semibold mb-2" style={{ color: '#e2e8f0' }}>
+              Performance Grade
+            </div>
+            <div className="text-lg" style={{ color: '#94a3b8' }}>
+              Better than <span className="font-bold" style={{ color: '#60a5fa' }}>{mockData.peerBenchmark.percentile}%</span> of optimizers
             </div>
           </div>
         </div>
 
         {/* Revenue Gap */}
-        <div className="mb-8 p-8 rounded-3xl bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700 shadow-xl">
+        <div 
+          className="mb-8 p-8 rounded-3xl border shadow-xl"
+          style={{
+            background: 'linear-gradient(135deg, #1e293b 0%, #334155 100%)',
+            borderColor: '#334155',
+          }}
+        >
           <div className="flex items-center gap-2 mb-8">
-            <div className="w-1 h-6 bg-gradient-to-b from-blue-500 to-cyan-500 rounded-full"></div>
-            <h3 className="text-sm font-mono text-slate-400 tracking-wider">REVENUE ANALYSIS</h3>
+            <div 
+              className="w-1 h-6 rounded-full"
+              style={{
+                background: 'linear-gradient(180deg, #3b82f6 0%, #06b6d4 100%)',
+              }}
+            ></div>
+            <h3 className="text-sm font-mono tracking-wider" style={{ color: '#94a3b8' }}>
+              REVENUE ANALYSIS
+            </h3>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8 mb-8">
-            <div className="p-6 rounded-2xl bg-slate-800/50 border border-slate-700">
-              <div className="text-xs text-slate-500 font-mono uppercase tracking-wider mb-3">Actual Revenue</div>
+            <div 
+              className="p-6 rounded-2xl border"
+              style={{
+                backgroundColor: 'rgba(30, 41, 59, 0.5)',
+                borderColor: '#334155',
+              }}
+            >
+              <div className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: '#64748b' }}>
+                Actual Revenue
+              </div>
               <div className="text-4xl font-bold font-mono text-white">
                 {formatCurrency(mockData.actualRevenue)}
               </div>
             </div>
-            <div className="p-6 rounded-2xl bg-slate-800/50 border border-slate-700">
-              <div className="text-xs text-slate-500 font-mono uppercase tracking-wider mb-3">Optimal Revenue</div>
+            <div 
+              className="p-6 rounded-2xl border"
+              style={{
+                backgroundColor: 'rgba(30, 41, 59, 0.5)',
+                borderColor: '#334155',
+              }}
+            >
+              <div className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: '#64748b' }}>
+                Optimal Revenue
+              </div>
               <div className="text-4xl font-bold font-mono text-white">
                 {formatCurrency(mockData.optimalRevenue)}
               </div>
             </div>
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-red-500/10 to-orange-500/10 border border-red-500/30">
-              <div className="text-xs text-red-400 font-mono uppercase tracking-wider mb-3">Opportunity Gap</div>
-              <div className="text-4xl font-bold font-mono text-red-400">
+            <div 
+              className="p-6 rounded-2xl border"
+              style={{
+                background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(251, 146, 60, 0.1) 100%)',
+                borderColor: 'rgba(239, 68, 68, 0.3)',
+              }}
+            >
+              <div className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: '#f87171' }}>
+                Opportunity Gap
+              </div>
+              <div className="text-4xl font-bold font-mono" style={{ color: '#f87171' }}>
                 -{formatCurrency(mockData.gapAmount)}
               </div>
-              <div className="text-sm text-red-400/80 mt-2">
+              <div className="text-sm mt-2" style={{ color: 'rgba(248, 113, 113, 0.8)' }}>
                 ({mockData.gapPercent}% unrealized)
               </div>
             </div>
           </div>
 
-          <div className="p-6 rounded-2xl bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/30">
+          <div 
+            className="p-6 rounded-2xl border"
+            style={{
+              background: 'linear-gradient(90deg, rgba(245, 158, 11, 0.1) 0%, rgba(251, 146, 60, 0.1) 100%)',
+              borderColor: 'rgba(245, 158, 11, 0.3)',
+            }}
+          >
             <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-amber-500/20 flex items-center justify-center">
-                <svg className="w-6 h-6 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+              <div 
+                className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center"
+                style={{
+                  backgroundColor: 'rgba(245, 158, 11, 0.2)',
+                }}
+              >
+                <svg className="w-6 h-6" style={{ color: '#fbbf24' }} fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                 </svg>
               </div>
               <div>
-                <div className="text-amber-100 font-semibold mb-1">Revenue Opportunity Identified</div>
-                <div className="text-amber-200/80 text-sm">
+                <div className="font-semibold mb-1" style={{ color: '#fef3c7' }}>
+                  Revenue Opportunity Identified
+                </div>
+                <div className="text-sm" style={{ color: 'rgba(254, 243, 199, 0.8)' }}>
                   Your optimizer left <span className="text-white font-bold">{formatCurrency(mockData.gapAmount)}</span> on the table this month. That's potential revenue that could be recovered with optimization.
                 </div>
               </div>
@@ -126,22 +203,47 @@ export default function Scorecard() {
         </div>
 
         {/* Key Stats */}
-        <div className="mb-8 p-8 rounded-3xl bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700 shadow-xl">
+        <div 
+          className="mb-8 p-8 rounded-3xl border shadow-xl"
+          style={{
+            background: 'linear-gradient(135deg, #1e293b 0%, #334155 100%)',
+            borderColor: '#334155',
+          }}
+        >
           <div className="flex items-center gap-2 mb-8">
-            <div className="w-1 h-6 bg-gradient-to-b from-blue-500 to-cyan-500 rounded-full"></div>
-            <h3 className="text-sm font-mono text-slate-400 tracking-wider">KEY METRICS</h3>
+            <div 
+              className="w-1 h-6 rounded-full"
+              style={{
+                background: 'linear-gradient(180deg, #3b82f6 0%, #06b6d4 100%)',
+              }}
+            ></div>
+            <h3 className="text-sm font-mono tracking-wider" style={{ color: '#94a3b8' }}>
+              KEY METRICS
+            </h3>
           </div>
           
           <div className="grid md:grid-cols-4 gap-6">
             {mockData.stats.map((stat, idx) => (
-              <div key={idx} className="p-6 rounded-2xl bg-slate-800/50 border border-slate-700 hover:border-slate-600 transition-colors">
-                <div className="text-xs text-slate-500 font-mono uppercase tracking-wider mb-3">{stat.label}</div>
+              <div 
+                key={idx} 
+                className="p-6 rounded-2xl border transition-colors"
+                style={{
+                  backgroundColor: 'rgba(30, 41, 59, 0.5)',
+                  borderColor: '#334155',
+                }}
+              >
+                <div className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: '#64748b' }}>
+                  {stat.label}
+                </div>
                 <div className="text-3xl font-bold font-mono text-white mb-2">{stat.value}</div>
-                <div className={`text-sm font-medium ${
-                  stat.positive === true ? 'text-emerald-400' : 
-                  stat.positive === false ? 'text-red-400' : 
-                  'text-slate-500'
-                }`}>
+                <div 
+                  className="text-sm font-medium"
+                  style={{ 
+                    color: stat.positive === true ? '#34d399' : 
+                           stat.positive === false ? '#f87171' : 
+                           '#64748b'
+                  }}
+                >
                   {stat.change !== '0%' ? stat.change + ' vs last month' : 'No change'}
                 </div>
               </div>
@@ -150,14 +252,27 @@ export default function Scorecard() {
         </div>
 
         {/* Peer Benchmark */}
-        <div className="mb-12 p-8 rounded-3xl bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700 shadow-xl">
+        <div 
+          className="mb-12 p-8 rounded-3xl border shadow-xl"
+          style={{
+            background: 'linear-gradient(135deg, #1e293b 0%, #334155 100%)',
+            borderColor: '#334155',
+          }}
+        >
           <div className="flex items-center gap-2 mb-8">
-            <div className="w-1 h-6 bg-gradient-to-b from-blue-500 to-cyan-500 rounded-full"></div>
-            <h3 className="text-sm font-mono text-slate-400 tracking-wider">MARKET BENCHMARK</h3>
+            <div 
+              className="w-1 h-6 rounded-full"
+              style={{
+                background: 'linear-gradient(180deg, #3b82f6 0%, #06b6d4 100%)',
+              }}
+            ></div>
+            <h3 className="text-sm font-mono tracking-wider" style={{ color: '#94a3b8' }}>
+              MARKET BENCHMARK
+            </h3>
           </div>
           
           <div className="mb-8">
-            <div className="text-sm text-slate-400 mb-8">
+            <div className="text-sm mb-8" style={{ color: '#94a3b8' }}>
               Distribution of <span className="text-white font-semibold">{mockData.peerBenchmark.distribution.reduce((sum, d) => sum + d.count, 0)}</span> optimizers (anonymous)
             </div>
             
@@ -169,18 +284,23 @@ export default function Scorecard() {
                 
                 return (
                   <div key={idx} className="flex-1 flex flex-col items-center gap-4">
-                    <div className="text-xl font-bold text-slate-300">{item.count}</div>
+                    <div className="text-xl font-bold" style={{ color: '#cbd5e1' }}>{item.count}</div>
                     <div
-                      className={`w-full rounded-t-2xl transition-all ${
-                        isCurrentGrade 
-                          ? 'bg-gradient-to-t from-blue-600 to-cyan-500 shadow-lg shadow-blue-500/50' 
-                          : 'bg-slate-700 hover:bg-slate-600'
-                      }`}
-                      style={{ height: `${height}%` }}
+                      className="w-full rounded-t-2xl transition-all"
+                      style={{ 
+                        height: `${height}%`,
+                        background: isCurrentGrade 
+                          ? 'linear-gradient(180deg, #2563eb 0%, #06b6d4 100%)' 
+                          : '#475569',
+                        boxShadow: isCurrentGrade ? '0 10px 40px rgba(59, 130, 246, 0.5)' : 'none',
+                      }}
                     />
-                    <div className={`text-2xl font-bold font-mono ${
-                      isCurrentGrade ? 'text-blue-400' : 'text-slate-500'
-                    }`}>
+                    <div 
+                      className="text-2xl font-bold font-mono"
+                      style={{ 
+                        color: isCurrentGrade ? '#60a5fa' : '#64748b'
+                      }}
+                    >
                       {item.grade}
                     </div>
                   </div>
@@ -189,20 +309,45 @@ export default function Scorecard() {
             </div>
           </div>
 
-          <div className="p-6 rounded-2xl bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/30">
-            <div className="text-slate-300">
-              Your optimizer ranks in the <span className="text-blue-400 font-bold text-lg">{mockData.peerBenchmark.percentile}th percentile</span> — better than most, but there's room to improve.
+          <div 
+            className="p-6 rounded-2xl border"
+            style={{
+              background: 'linear-gradient(90deg, rgba(59, 130, 246, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%)',
+              borderColor: 'rgba(59, 130, 246, 0.3)',
+            }}
+          >
+            <div style={{ color: '#cbd5e1' }}>
+              Your optimizer ranks in the <span className="font-bold text-lg" style={{ color: '#60a5fa' }}>{mockData.peerBenchmark.percentile}th percentile</span> — better than most, but there's room to improve.
             </div>
           </div>
         </div>
 
         {/* CTA */}
-        <div className="text-center p-12 rounded-3xl bg-gradient-to-br from-blue-600 to-cyan-600 shadow-2xl shadow-blue-500/20">
+        <div 
+          className="text-center p-12 rounded-3xl shadow-2xl"
+          style={{
+            background: 'linear-gradient(135deg, #2563eb 0%, #0891b2 100%)',
+            boxShadow: '0 20px 60px rgba(59, 130, 246, 0.3)',
+          }}
+        >
           <h2 className="text-3xl font-bold text-white mb-4">Ready to close the gap?</h2>
-          <p className="text-blue-100 mb-8 max-w-2xl mx-auto text-lg">
+          <p className="mb-8 max-w-2xl mx-auto text-lg" style={{ color: '#dbeafe' }}>
             Deep dive into dispatch patterns, market opportunities, and optimization recommendations
           </p>
-          <button className="px-10 py-5 bg-white text-blue-600 font-bold text-lg rounded-xl hover:bg-blue-50 transition-all shadow-xl hover:shadow-2xl hover:scale-[1.02]">
+          <button 
+            className="px-10 py-5 bg-white font-bold text-lg rounded-xl transition-all shadow-xl"
+            style={{ 
+              color: '#2563eb',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'scale(1.02)';
+              e.currentTarget.style.boxShadow = '0 25px 70px rgba(255, 255, 255, 0.3)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'scale(1)';
+              e.currentTarget.style.boxShadow = '0 20px 60px rgba(255, 255, 255, 0.2)';
+            }}
+          >
             Get Full Analysis
           </button>
         </div>

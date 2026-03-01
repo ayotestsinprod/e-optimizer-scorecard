@@ -39,18 +39,39 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+    <div 
+      className="min-h-screen flex flex-col items-center justify-center p-6"
+      style={{
+        background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)',
+      }}
+    >
       <div className="max-w-4xl w-full">
         {/* Hero Section */}
         <div className="text-center mb-12">
-          <div className="inline-block mb-6 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20">
-            <span className="text-blue-400 text-sm font-medium">Battery Optimizer Analysis</span>
+          <div 
+            className="inline-block mb-6 px-4 py-2 rounded-full border"
+            style={{
+              backgroundColor: 'rgba(59, 130, 246, 0.1)',
+              borderColor: 'rgba(59, 130, 246, 0.3)',
+            }}
+          >
+            <span className="text-sm font-medium" style={{ color: '#60a5fa' }}>Battery Optimizer Analysis</span>
           </div>
-          <h1 className="text-6xl font-bold mb-6 tracking-tight bg-gradient-to-br from-white via-blue-50 to-blue-200 bg-clip-text text-transparent">
+          <h1 className="text-6xl font-bold mb-6 tracking-tight text-white">
             How does your optimizer{' '}
-            <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">really</span> perform?
+            <span 
+              style={{
+                background: 'linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              really
+            </span>{' '}
+            perform?
           </h1>
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl max-w-2xl mx-auto leading-relaxed" style={{ color: '#94a3b8' }}>
             Get your battery optimizer scorecard in 60 seconds. See exactly how much revenue you're leaving on the table.
           </p>
         </div>
@@ -60,32 +81,39 @@ export default function Home() {
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
-          className={`
-            relative border-2 border-dashed rounded-2xl p-12 text-center transition-all
-            ${isDragging 
-              ? 'border-blue-500 bg-blue-500/5 scale-[1.02]' 
-              : 'border-slate-700 hover:border-blue-500/50 bg-slate-900/50'
-            }
-            ${isUploading ? 'pointer-events-none' : ''}
-          `}
+          className="relative border-2 border-dashed rounded-2xl p-12 text-center transition-all"
+          style={{
+            borderColor: isDragging ? '#3b82f6' : '#334155',
+            backgroundColor: isDragging ? 'rgba(59, 130, 246, 0.05)' : 'rgba(15, 23, 42, 0.5)',
+            transform: isDragging ? 'scale(1.02)' : 'scale(1)',
+            pointerEvents: isUploading ? 'none' : 'auto',
+          }}
         >
           {isUploading ? (
             <div className="py-8">
               <div className="w-16 h-16 mx-auto mb-6 relative">
-                <div className="absolute inset-0 border-4 border-slate-700 rounded-full"></div>
-                <div className="absolute inset-0 border-4 border-blue-500 rounded-full border-t-transparent animate-spin"></div>
+                <div className="absolute inset-0 border-4 rounded-full" style={{ borderColor: '#334155' }}></div>
+                <div 
+                  className="absolute inset-0 border-4 rounded-full border-t-transparent animate-spin"
+                  style={{ borderColor: '#3b82f6' }}
+                ></div>
               </div>
               <h3 className="text-2xl font-semibold mb-2 text-white">
                 Processing your data...
               </h3>
-              <p className="text-slate-400">
+              <p style={{ color: '#94a3b8' }}>
                 Analyzing dispatch patterns and calculating optimal revenue
               </p>
             </div>
           ) : (
             <>
               <div className="mb-6">
-                <div className="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+                <div 
+                  className="w-20 h-20 mx-auto mb-4 rounded-2xl flex items-center justify-center"
+                  style={{
+                    background: 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)',
+                  }}
+                >
                   <svg
                     className="w-10 h-10 text-white"
                     fill="none"
@@ -105,7 +133,7 @@ export default function Home() {
               <h3 className="text-2xl font-semibold mb-2 text-white">
                 Drop your dispatch data here
               </h3>
-              <p className="text-slate-400 mb-8">
+              <p className="mb-8" style={{ color: '#94a3b8' }}>
                 Or click to browse files
               </p>
 
@@ -118,12 +146,24 @@ export default function Home() {
               />
               <label
                 htmlFor="file-upload"
-                className="inline-block px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold rounded-xl cursor-pointer hover:from-blue-500 hover:to-blue-400 transition-all shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-[1.02]"
+                className="inline-block px-8 py-4 text-white font-semibold rounded-xl cursor-pointer transition-all"
+                style={{
+                  background: 'linear-gradient(135deg, #2563eb 0%, #3b82f6 100%)',
+                  boxShadow: '0 10px 40px rgba(59, 130, 246, 0.3)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'scale(1.02)';
+                  e.currentTarget.style.boxShadow = '0 15px 50px rgba(59, 130, 246, 0.4)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'scale(1)';
+                  e.currentTarget.style.boxShadow = '0 10px 40px rgba(59, 130, 246, 0.3)';
+                }}
               >
                 Select CSV File
               </label>
 
-              <p className="text-sm text-slate-500 mt-8">
+              <p className="text-sm mt-8" style={{ color: '#64748b' }}>
                 Upload one month of dispatch data • CSV format • Anonymous & secure
               </p>
             </>
@@ -137,11 +177,26 @@ export default function Home() {
             { value: '£0', label: 'No signup required' },
             { value: '100%', label: 'Anonymous analysis' },
           ].map((item, idx) => (
-            <div key={idx} className="text-center p-6 rounded-xl bg-slate-900/50 border border-slate-800 hover:border-slate-700 transition-colors">
-              <div className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-2">
+            <div 
+              key={idx} 
+              className="text-center p-6 rounded-xl border transition-colors"
+              style={{
+                backgroundColor: 'rgba(15, 23, 42, 0.5)',
+                borderColor: '#1e293b',
+              }}
+            >
+              <div 
+                className="text-4xl font-bold mb-2"
+                style={{
+                  background: 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
                 {item.value}
               </div>
-              <div className="text-sm text-slate-400">{item.label}</div>
+              <div className="text-sm" style={{ color: '#94a3b8' }}>{item.label}</div>
             </div>
           ))}
         </div>

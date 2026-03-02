@@ -1,8 +1,9 @@
 'use client';
 
 import { useState } from 'react';
+import type { ScorecardData } from '@/types/scorecard';
 
-const mockData = {
+const mockData: ScorecardData = {
   grade: 'B+',
   asset: 'Bramley Battery',
   market: 'GB Frequency Response',
@@ -405,7 +406,7 @@ export default function Scorecard() {
             }}
           >
             <div style={{ color: '#cbd5e1' }}>
-              Your optimizer ranks in the <span style={{ fontWeight: 700, fontSize: '1.125rem', color: '#60a5fa' }}>{mockData.peerBenchmark.percentile}th percentile</span> — better than most, but there's room to improve.
+              Your optimizer ranks in the <span style={{ fontWeight: 700, fontSize: '1.125rem', color: '#60a5fa' }}>{mockData.peerBenchmark.percentile}th percentile</span> — better than most, but there&apos;s room to improve.
             </div>
           </div>
         </div>
@@ -575,7 +576,7 @@ export default function Scorecard() {
                   Thank you!
                 </h3>
                 <p style={{ color: '#94a3b8', margin: 0 }}>
-                  We'll send your full analysis shortly.
+                  We&apos;ll send your full analysis shortly.
                 </p>
               </div>
             )}

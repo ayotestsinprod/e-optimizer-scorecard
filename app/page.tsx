@@ -90,7 +90,7 @@ export default function Home() {
             perform?
           </h1>
           <p style={{ fontSize: '1.125rem', maxWidth: '42rem', margin: '0 auto', color: '#94a3b8' }}>
-            Get your battery optimizer scorecard in 60 seconds. See exactly how much revenue you're leaving on the table.
+            Get your battery optimizer scorecard in 60 seconds. See exactly how much revenue you&apos;re leaving on the table.
           </p>
         </div>
 

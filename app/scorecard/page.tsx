@@ -359,21 +359,23 @@ export default function Scorecard() {
               Distribution of <span style={{ color: 'white', fontWeight: 600 }}>{mockData.peerBenchmark.distribution.reduce((sum, d) => sum + d.count, 0)}</span> optimizers (anonymous)
             </div>
             
-            <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '24px', height: '256px', padding: '0 16px' }}>
+            <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '24px', padding: '0 16px' }}>
               {mockData.peerBenchmark.distribution.map((item, idx) => {
                 const maxCount = Math.max(...mockData.peerBenchmark.distribution.map(d => d.count));
-                const height = (item.count / maxCount) * 100;
+                const maxHeight = 200; // max height in pixels
+                const heightPx = (item.count / maxCount) * maxHeight;
                 const isCurrentGrade = item.grade === mockData.grade.charAt(0);
                 
                 return (
-                  <div key={idx} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
-                    <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#cbd5e1' }}>{item.count}</div>
+                  <div key={idx} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+                    <div style={{ fontSize: '1.125rem', fontWeight: 700, color: '#cbd5e1' }}>{item.count}</div>
                     <div
                       style={{ 
                         width: '100%',
-                        height: `${height}%`,
-                        borderTopLeftRadius: '16px',
-                        borderTopRightRadius: '16px',
+                        height: `${heightPx}px`,
+                        minHeight: '20px',
+                        borderTopLeftRadius: '12px',
+                        borderTopRightRadius: '12px',
                         transition: 'all 0.2s',
                         background: isCurrentGrade 
                           ? 'linear-gradient(180deg, #2563eb 0%, #06b6d4 100%)' 
@@ -383,7 +385,7 @@ export default function Scorecard() {
                     />
                     <div 
                       style={{ 
-                        fontSize: '1.5rem',
+                        fontSize: '1.25rem',
                         fontWeight: 700,
                         fontFamily: 'monospace',
                         color: isCurrentGrade ? '#60a5fa' : '#64748b'

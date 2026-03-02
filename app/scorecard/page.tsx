@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+
 const mockData = {
   grade: 'B+',
   asset: 'Bramley Battery',
@@ -28,6 +30,11 @@ const mockData = {
 };
 
 export default function Scorecard() {
+  const [showModal, setShowModal] = useState(false);
+  const [email, setEmail] = useState('');
+  const [company, setCompany] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-GB', {
       style: 'currency',
@@ -35,6 +42,24 @@ export default function Scorecard() {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(amount);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Send to backend/webhook (placeholder for now)
+    console.log('Lead captured:', { email, company });
+    
+    // For MVP, just show success state
+    setSubmitted(true);
+    
+    // Close modal after 2 seconds
+    setTimeout(() => {
+      setShowModal(false);
+      setSubmitted(false);
+      setEmail('');
+      setCompany('');
+    }, 2000);
   };
 
   return (
@@ -198,7 +223,7 @@ export default function Scorecard() {
               }}
             >
               <div style={{ fontSize: '12px', color: '#f87171', fontFamily: 'monospace', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '12px' }}>
-                Opportunity Gap
+                Money Left on Table
               </div>
               <div style={{ fontSize: '2.25rem', fontWeight: 700, fontFamily: 'monospace', color: '#f87171' }}>
                 -{formatCurrency(mockData.gapAmount)}
@@ -402,6 +427,7 @@ export default function Scorecard() {
             Deep dive into dispatch patterns, market opportunities, and optimization recommendations
           </p>
           <button 
+            onClick={() => setShowModal(true)}
             style={{ 
               padding: '20px 40px',
               backgroundColor: 'white',
@@ -427,6 +453,135 @@ export default function Scorecard() {
           </button>
         </div>
       </div>
+
+      {/* Modal */}
+      {showModal && (
+        <div 
+          onClick={() => !submitted && setShowModal(false)}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '24px',
+            zIndex: 50,
+          }}
+        >
+          <div 
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              backgroundColor: '#1e293b',
+              borderRadius: '16px',
+              padding: '32px',
+              maxWidth: '500px',
+              width: '100%',
+              border: '1px solid #334155',
+            }}
+          >
+            {!submitted ? (
+              <>
+                <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'white', marginTop: 0, marginBottom: '8px' }}>
+                  Get Your Full Analysis
+                </h3>
+                <p style={{ color: '#94a3b8', marginBottom: '24px' }}>
+                  Enter your details and we'll send you a comprehensive breakdown of your optimizer's performance.
+                </p>
+                
+                <form onSubmit={handleSubmit}>
+                  <div style={{ marginBottom: '16px' }}>
+                    <label style={{ display: 'block', fontSize: '14px', fontWeight: 500, color: '#cbd5e1', marginBottom: '8px' }}>
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="you@company.com"
+                      style={{
+                        width: '100%',
+                        padding: '12px 16px',
+                        borderRadius: '8px',
+                        border: '1px solid #334155',
+                        backgroundColor: '#0f172a',
+                        color: 'white',
+                        fontSize: '16px',
+                      }}
+                    />
+                  </div>
+                  
+                  <div style={{ marginBottom: '24px' }}>
+                    <label style={{ display: 'block', fontSize: '14px', fontWeight: 500, color: '#cbd5e1', marginBottom: '8px' }}>
+                      Company
+                    </label>
+                    <input
+                      type="text"
+                      value={company}
+                      onChange={(e) => setCompany(e.target.value)}
+                      placeholder="Your company name"
+                      style={{
+                        width: '100%',
+                        padding: '12px 16px',
+                        borderRadius: '8px',
+                        border: '1px solid #334155',
+                        backgroundColor: '#0f172a',
+                        color: 'white',
+                        fontSize: '16px',
+                      }}
+                    />
+                  </div>
+
+                  <div style={{ display: 'flex', gap: '12px' }}>
+                    <button
+                      type="button"
+                      onClick={() => setShowModal(false)}
+                      style={{
+                        flex: 1,
+                        padding: '12px 24px',
+                        borderRadius: '8px',
+                        border: '1px solid #334155',
+                        backgroundColor: 'transparent',
+                        color: '#94a3b8',
+                        fontWeight: 600,
+                        cursor: 'pointer',
+                      }}
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="submit"
+                      style={{
+                        flex: 1,
+                        padding: '12px 24px',
+                        borderRadius: '8px',
+                        border: 'none',
+                        background: 'linear-gradient(135deg, #2563eb 0%, #3b82f6 100%)',
+                        color: 'white',
+                        fontWeight: 600,
+                        cursor: 'pointer',
+                      }}
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </form>
+              </>
+            ) : (
+              <div style={{ textAlign: 'center', padding: '24px' }}>
+                <div style={{ fontSize: '48px', marginBottom: '16px' }}>✅</div>
+                <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'white', marginTop: 0, marginBottom: '8px' }}>
+                  Thank you!
+                </h3>
+                <p style={{ color: '#94a3b8', margin: 0 }}>
+                  We'll send your full analysis shortly.
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
